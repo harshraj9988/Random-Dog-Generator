@@ -1,4 +1,4 @@
-package com.harshlabs.randomdoggenerator.presentation
+package com.harshlabs.randomdoggenerator.presentation.home_screen
 
 import android.graphics.Bitmap
 import androidx.lifecycle.MutableLiveData
@@ -11,18 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MyViewModel @Inject constructor(
-   private val repository: DogImageRepository
+class HomeScreenViewModel @Inject constructor(
 ) : ViewModel() {
 
-    val bitmap = MutableLiveData<Bitmap?>(null)
-
-    fun loadImage() {
-       viewModelScope.launch {
-          val response = repository.downloadAndSaveDogImage()
-          if(response is ResponseResource.Success) {
-             bitmap.postValue(response.data)
-          }
-       }
-    }
 }

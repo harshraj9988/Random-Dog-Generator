@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/naviagtion_graph"
+    app:startDestination="@id/homeScreenFragment">
+
+    <fragment
+        android:id="@+id/homeScreenFragment"
+        android:name="com.harshlabs.randomdoggenerator.presentation.home_screen.HomeScreenFragment"
+        android:label="fragment_home_screen"
+        tools:layout="@layout/fragment_home_screen" >
+        <action
+            android:id="@+id/action_homeScreenFragment_to_generateDogScreenFragment"
+            app:destination="@id/generateDogScreenFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_recentlyGeneratedDogsScreenFragment"
+            app:destination="@id/recentlyGeneratedDogsScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/generateDogScreenFragment"
+        android:name="com.harshlabs.randomdoggenerator.presentation.generate_dog_screen.GenerateDogScreenFragment"
+        android:label="fragment_generate_dog_screen"
+        tools:layout="@layout/fragment_generate_dog_screen" >
+        <action
+            android:id="@+id/action_generateDogScreenFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recentlyGeneratedDogsScreenFragment"
+        android:name="com.harshlabs.randomdoggenerator.presentation.recently_generated_dogs_screen.RecentlyGeneratedDogsScreenFragment"
+        android:label="fragment_recently_generated_dogs_screen"
+        tools:layout="@layout/fragment_recently_generated_dogs_screen" >
+        <action
+            android:id="@+id/action_recentlyGeneratedDogsScreenFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
+    </fragment>
+</navigation>
