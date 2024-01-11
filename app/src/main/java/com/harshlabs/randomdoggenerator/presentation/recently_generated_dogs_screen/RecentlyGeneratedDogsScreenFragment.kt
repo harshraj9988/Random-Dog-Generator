@@ -30,6 +30,7 @@ class RecentlyGeneratedDogsScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = DogImageAdapter()
+        binding.recyclerView.layoutManager = CustomLinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
         setupOnClickListeners()
         setupObservers()
