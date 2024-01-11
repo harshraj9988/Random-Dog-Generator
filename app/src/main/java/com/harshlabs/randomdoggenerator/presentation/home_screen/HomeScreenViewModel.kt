@@ -16,18 +16,18 @@ import javax.inject.Inject
 class HomeScreenViewModel @Inject constructor(
 ) : ViewModel() {
 
-    private val _uiState = MutableLiveData<UiState>(UiState.HomeScreen)
-    val uiState: LiveData<UiState> = _uiState
+    private val _uiState = MutableLiveData<UiState<Unit>>(UiState.HomeScreen())
+    val uiState: LiveData<UiState<Unit>> = _uiState
 
     fun goToGenerateDogScreen() {
-        _uiState.value = UiState.GenerateDogScreen
+        _uiState.value = UiState.GenerateDogScreen()
     }
 
     fun goToRecentlyGeneratedDogScreen() {
-        _uiState.value = UiState.RecentlyGeneratedDogScreen
+        _uiState.value = UiState.RecentlyGeneratedDogScreen()
     }
 
     fun resetUiState() {
-        _uiState.value = UiState.HomeScreen
+        _uiState.value = UiState.HomeScreen()
     }
 }

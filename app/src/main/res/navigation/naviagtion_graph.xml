@@ -21,18 +21,10 @@
         android:id="@+id/generateDogScreenFragment"
         android:name="com.harshlabs.randomdoggenerator.presentation.generate_dog_screen.GenerateDogScreenFragment"
         android:label="fragment_generate_dog_screen"
-        tools:layout="@layout/fragment_generate_dog_screen" >
-        <action
-            android:id="@+id/action_generateDogScreenFragment_to_homeScreenFragment"
-            app:destination="@id/homeScreenFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_generate_dog_screen" />
     <fragment
         android:id="@+id/recentlyGeneratedDogsScreenFragment"
         android:name="com.harshlabs.randomdoggenerator.presentation.recently_generated_dogs_screen.RecentlyGeneratedDogsScreenFragment"
         android:label="fragment_recently_generated_dogs_screen"
-        tools:layout="@layout/fragment_recently_generated_dogs_screen" >
-        <action
-            android:id="@+id/action_recentlyGeneratedDogsScreenFragment_to_homeScreenFragment"
-            app:destination="@id/homeScreenFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_recently_generated_dogs_screen" />
 </navigation>

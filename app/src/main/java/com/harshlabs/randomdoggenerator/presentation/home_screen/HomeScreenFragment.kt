@@ -11,11 +11,14 @@ import androidx.navigation.fragment.findNavController
 import com.harshlabs.randomdoggenerator.R
 import com.harshlabs.randomdoggenerator.databinding.FragmentHomeScreenBinding
 import com.harshlabs.randomdoggenerator.presentation.utils.UiState
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeScreenFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeScreenBinding
     private val viewModel: HomeScreenViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
