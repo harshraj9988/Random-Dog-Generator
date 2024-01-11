@@ -2,6 +2,7 @@ package com.harshlabs.randomdoggenerator.dependency_injection
 
 import android.content.Context
 import com.google.gson.GsonBuilder
+import com.harshlabs.randomdoggenerator.data.local.InternalStorageManager
 import com.harshlabs.randomdoggenerator.data.remote.BASE_URL
 import com.harshlabs.randomdoggenerator.data.remote.DogGeneratorApi
 import com.harshlabs.randomdoggenerator.presentation.BaseApplication
@@ -32,5 +33,11 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build()
             .create(DogGeneratorApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideInternalStorageManager(application: BaseApplication): InternalStorageManager {
+        return InternalStorageManager(application)
     }
 }

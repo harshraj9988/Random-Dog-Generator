@@ -1,6 +1,8 @@
 package com.harshlabs.randomdoggenerator.presentation
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -22,5 +24,23 @@ class MainActivity : AppCompatActivity() {
         }
 
         tv.setOnClickListener { myViewModel.getImage() }
+
+        val imgv = findViewById<ImageView>(R.id.imgv)
+        val dwn = findViewById<Button>(R.id.btn_dwn)
+        val load = findViewById<Button>(R.id.btn_img)
+
+        dwn.setOnClickListener {
+            myViewModel.loadImage()
+        }
+
+        load.setOnClickListener {
+            myViewModel.getImageFromStorage()
+        }
+
+        myViewModel.bitmap.observe(this) {
+            it?.let {
+                imgv.setImageBitmap(it)
+            }
+        }
     }
 }

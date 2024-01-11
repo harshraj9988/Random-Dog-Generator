@@ -9,6 +9,7 @@ import kotlinx.coroutines.withContext
 import java.io.FileFilter
 import java.io.IOException
 import javax.inject.Inject
+import kotlin.coroutines.suspendCoroutine
 
 class InternalStorageManager @Inject constructor(
     private val application: BaseApplication
@@ -36,7 +37,7 @@ class InternalStorageManager @Inject constructor(
     suspend fun savePhotoToInternalStorage(timeStamp: Long, bitmap: Bitmap): Boolean {
         return try {
             val filesData = getFilesCountWithMinFileName()
-            if(filesData.fileCount == 20) deletePhoto(filesData.firstAddedFile)
+            if (filesData.fileCount == 20) deletePhoto(filesData.firstAddedFile)
             application.openFileOutput("$timeStamp.jpg", MODE_PRIVATE).use { stream ->
                 val isSuccess = bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
                 if (!isSuccess) return false
@@ -53,10 +54,12 @@ class InternalStorageManager @Inject constructor(
             val files = application
                 .filesDir
                 .listFiles(FileFilter { it.canRead() && it.name.endsWith(".jpg") })
-                ?: return@withContext FilesData(0, "")
+
+            if (files.isNullOrEmpty()) return@withContext FilesData(0, "")
             return@withContext FilesData(
                 files.size,
-                files.reduce { acc, file -> if (acc.name < file.name) acc else file }.name
+                files.reduce { acc, file ->
+                    if (acc.lastModified() < file.lastModified()) acc else file }.name
             )
         }
     }
