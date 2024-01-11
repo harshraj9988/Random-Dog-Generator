@@ -2,9 +2,11 @@ package com.harshlabs.randomdoggenerator.dependency_injection
 
 import android.content.Context
 import com.google.gson.GsonBuilder
+import com.harshlabs.randomdoggenerator.data.DogImageRepositoryImpl
 import com.harshlabs.randomdoggenerator.data.local.InternalStorageManager
 import com.harshlabs.randomdoggenerator.data.remote.BASE_URL
 import com.harshlabs.randomdoggenerator.data.remote.DogGeneratorApi
+import com.harshlabs.randomdoggenerator.domain.repository.DogImageRepository
 import com.harshlabs.randomdoggenerator.presentation.BaseApplication
 import dagger.Module
 import dagger.Provides
@@ -39,5 +41,15 @@ object AppModule {
     @Provides
     fun provideInternalStorageManager(application: BaseApplication): InternalStorageManager {
         return InternalStorageManager(application)
+    }
+
+    @Singleton
+    @Provides
+    fun provideDogImageRepository(
+        dogGeneratorApi: DogGeneratorApi,
+        internalStorageManager: InternalStorageManager,
+        application: BaseApplication
+    ): DogImageRepository {
+        return DogImageRepositoryImpl(dogGeneratorApi, internalStorageManager, application)
     }
 }

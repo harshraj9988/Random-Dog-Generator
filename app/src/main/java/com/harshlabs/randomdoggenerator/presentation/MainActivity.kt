@@ -18,23 +18,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val tv = findViewById<TextView>(R.id.my_tv)
-        myViewModel.data.observe(this) {
-            tv.text = it.toString()
-        }
-
-        tv.setOnClickListener { myViewModel.getImage() }
-
         val imgv = findViewById<ImageView>(R.id.imgv)
         val dwn = findViewById<Button>(R.id.btn_dwn)
-        val load = findViewById<Button>(R.id.btn_img)
 
         dwn.setOnClickListener {
             myViewModel.loadImage()
-        }
-
-        load.setOnClickListener {
-            myViewModel.getImageFromStorage()
         }
 
         myViewModel.bitmap.observe(this) {
