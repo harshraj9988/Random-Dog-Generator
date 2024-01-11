@@ -23,6 +23,7 @@ class InternalStorageManager @Inject constructor(
             withContext(Dispatchers.IO) {
                 val files =
                     application.filesDir.listFiles(FileFilter { it.canRead() && it.name.endsWith(".jpg") })
+                        ?.sortedByDescending { it.lastModified() }
 
                 val storedDogImages = files?.map {
                     val bytes = it.readBytes()
