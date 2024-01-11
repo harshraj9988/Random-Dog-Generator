@@ -2,4 +2,7 @@
     <string name="app_name">Random Dog Generator!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="random_dog_generator">Random Dog Generator!</string>
+    <string name="generate_dogs">Generate Dogs!</string>
+    <string name="my_recently_generated_dogs">My Recently Generated Dogs!</string>
 </resources>
